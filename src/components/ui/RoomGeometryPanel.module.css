@@ -1,0 +1,437 @@
+/* ============================================================================
+ * RoomGeometryPanel.module.css
+ * Scoped styles for the Room Geometry Builder control panel.
+ * Uses CSS custom properties bridged from the global design token layer.
+ * Strict CSS Module scoping — zero global namespace pollution.
+ * ============================================================================ */
+
+/* ── Panel Shell ──────────────────────────────────────────────────────────── */
+
+.panel {
+  width: 300px;
+  min-width: 300px;
+  height: 100%;
+  background: linear-gradient(180deg, #0f1117 0%, #111827 100%);
+  border-right: 1px solid #1e2a45;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #2a3a60 transparent;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  position: relative;
+  z-index: 10;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── Panel Header ─────────────────────────────────────────────────────────── */
+
+.header {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid #1e2a45;
+  background: rgba(15, 17, 23, 0.8);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.headerIcon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #3730a3, #4f46e5);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(79, 70, 229, 0.4);
+}
+
+.headerTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.headerSubtitle {
+  font-size: 11px;
+  color: #4a5568;
+  letter-spacing: 0.01em;
+  margin-left: 42px;
+}
+
+/* ── Section Containers ───────────────────────────────────────────────────── */
+
+.section {
+  padding: 16px 20px;
+  border-bottom: 1px solid #1a2035;
+}
+
+.sectionTitle {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #4a5568;
+  margin: 0 0 14px;
+}
+
+/* ── Plan Preview ─────────────────────────────────────────────────────────── */
+
+.planPreviewContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0 4px;
+  background: rgba(10, 12, 20, 0.5);
+  border-radius: 8px;
+  border: 1px solid #1e2a45;
+}
+
+/* ── Dimension Inputs ─────────────────────────────────────────────────────── */
+
+.dimensionControl {
+  margin-bottom: 18px;
+}
+
+.dimensionControl:last-child {
+  margin-bottom: 0;
+}
+
+.dimensionLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.dimensionName {
+  font-size: 12px;
+  font-weight: 500;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dimensionAxis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  font-family: monospace;
+  flex-shrink: 0;
+}
+
+.axisX {
+  background: rgba(248, 113, 113, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.axisY {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.axisZ {
+  background: rgba(96, 165, 250, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.dimensionValueGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dimensionInput {
+  width: 58px;
+  padding: 4px 6px;
+  background: #0f1117;
+  border: 1px solid #2a3a5e;
+  border-radius: 5px;
+  color: #e2e8f0;
+  font-size: 12px;
+  font-family: monospace;
+  text-align: right;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  -moz-appearance: textfield;
+}
+
+.dimensionInput::-webkit-inner-spin-button,
+.dimensionInput::-webkit-outer-spin-button {
+  opacity: 0.4;
+}
+
+.dimensionInput:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+.dimensionUnit {
+  font-size: 10px;
+  color: #4a5568;
+  font-family: monospace;
+}
+
+.slider {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.slider:hover {
+  opacity: 0.9;
+}
+
+.sliderWidth {
+  background: linear-gradient(90deg, #f87171 0%, #1e2a45 100%);
+}
+
+.sliderLength {
+  background: linear-gradient(90deg, #60a5fa 0%, #1e2a45 100%);
+}
+
+.sliderHeight {
+  background: linear-gradient(90deg, #4ade80 0%, #1e2a45 100%);
+}
+
+/* Dynamic gradient applied via inline style */
+.sliderDynamic {
+  background: var(--slider-track, #2a3a5e);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  border: 2px solid #4f46e5;
+  box-shadow: 0 0 6px rgba(79, 70, 229, 0.5);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.8);
+}
+
+.slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  border: 2px solid #4f46e5;
+}
+
+/* ── Statistics Display ───────────────────────────────────────────────────── */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.statCard {
+  background: rgba(15, 17, 23, 0.8);
+  border: 1px solid #1e2a45;
+  border-radius: 8px;
+  padding: 10px 12px;
+  transition: border-color 0.2s ease;
+}
+
+.statCard:hover {
+  border-color: #2a3a65;
+}
+
+.statCard.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.statLabel {
+  font-size: 10px;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.statValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #c7d2fe;
+  font-family: monospace;
+  letter-spacing: -0.02em;
+}
+
+.statUnit {
+  font-size: 10px;
+  color: #4a5568;
+  margin-left: 2px;
+}
+
+.statRatio {
+  font-size: 11px;
+  font-weight: 500;
+  color: #818cf8;
+  font-family: monospace;
+}
+
+/* ── Surface Visibility Toggles ──────────────────────────────────────────── */
+
+.surfaceGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.surfaceToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  background: rgba(15, 17, 23, 0.6);
+  border: 1px solid #1e2a45;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+  color: #94a3b8;
+  font-size: 11px;
+  font-family: inherit;
+}
+
+.surfaceToggle:hover {
+  border-color: #2a3a65;
+  background: rgba(30, 42, 69, 0.4);
+}
+
+.surfaceToggle.active {
+  border-color: #3730a3;
+  background: rgba(55, 48, 163, 0.15);
+  color: #c7d2fe;
+}
+
+.surfaceToggle.active:hover {
+  border-color: #4f46e5;
+  background: rgba(79, 70, 229, 0.2);
+}
+
+.toggleIndicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #374151;
+  flex-shrink: 0;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.surfaceToggle.active .toggleIndicator {
+  background: #818cf8;
+  box-shadow: 0 0 6px rgba(129, 140, 248, 0.6);
+}
+
+.toggleLabel {
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+/* ── Batch Controls ───────────────────────────────────────────────────────── */
+
+.batchControls {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.batchBtn {
+  flex: 1;
+  padding: 5px 8px;
+  background: transparent;
+  border: 1px solid #1e2a45;
+  border-radius: 5px;
+  color: #4a5568;
+  font-size: 10px;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.batchBtn:hover {
+  border-color: #3730a3;
+  color: #818cf8;
+  background: rgba(55, 48, 163, 0.1);
+}
+
+/* ── Reset Button ─────────────────────────────────────────────────────────── */
+
+.footer {
+  padding: 14px 20px 20px;
+  margin-top: auto;
+}
+
+.resetBtn {
+  width: 100%;
+  padding: 9px;
+  background: transparent;
+  border: 1px solid #2a3a5e;
+  border-radius: 7px;
+  color: #4a5568;
+  font-size: 11px;
+  font-family: inherit;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.resetBtn:hover {
+  border-color: #4f46e5;
+  color: #818cf8;
+  background: rgba(79, 70, 229, 0.08);
+  box-shadow: 0 0 12px rgba(79, 70, 229, 0.15);
+}

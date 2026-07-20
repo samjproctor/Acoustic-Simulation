@@ -12,8 +12,7 @@ You can review the detailed strategy in the following file:
 2. **3D Rendering Abstraction:** We will integrate Three.js utilizing `@react-three/fiber`. This allows us to treat 3D objects as encapsulated components within the React tree, taking advantage of a reactive state model and providing a clean abstraction layer over the low-level WebGL API.
 3. **Dependency Injection & State:** We will utilize a centralized state store to manage data flow. This guarantees that our Core UI layer and the Visualization layer remain completely decoupled.
 
-Since this is a new environment, I highly recommend setting this new directory as your active workspace for future operations:
-`/Users/sam/.gemini/antigravity-cli/scratch/web3d-project`
+Since this is a new environment, please ensure you use this current directory as your active workspace for future operations.
 
 Please review the proposed architecture. Once you validate the structural integrity of this plan, we can proceed to initialize the framework and establish the foundational directory architecture.
 Finn Node's structural feedback is exceptionally sound. The addition of the testing toolchain, environment abstraction layer, and explicit fault isolation mechanisms strongly fortify our foundational architecture. The revised plan resolves the identified coupling vectors and aligns perfectly with our goal of achieving high cohesion and loose coupling across the system. 
